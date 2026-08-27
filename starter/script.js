@@ -65,13 +65,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 /*
@@ -132,4 +126,48 @@ console.log(arr.at(-1));
 
 console.log('huzaifa'.at(4));
 console.log('huzaifa'.at(-1));
-*/
+/////////////////////////////////////////
+//LOOPING ARRAY "FOREACH"
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for (const movement of movements)
+for (const [i, movement] of movements.entries()) {
+if (movement > 0) {
+  console.log(`Movement ${i + 1}: You deposited ${movement}`);
+} else console.log(`Movement ${i + 1}: You Withdraw ${Math.abs(movement)}`);
+}
+
+console.log('///////////////////////////FOREACH METHOD///////////////////////');
+
+movements.forEach(function (mov, i, arr) {
+  // if (movement > 0) {
+    //   console.log(`You deposited ${movement}`);
+    // } else console.log(`You Withdraw ${Math.abs(movement)}`);
+    if (mov > 0) {
+      console.log(`Movement ${i + 1}: You deposited ${mov}`);
+    } else console.log(`Movement ${i + 1}: You Withdraw ${Math.abs(mov)}`);
+  });
+  
+  /////////////////////////////////////////
+  //FOREACH WITH SETS AND MAPS
+  //MAP
+  const currencies = new Map([
+    ['USD', 'United States dollar'],
+    ['EUR', 'Euro'],
+    ['GBP', 'Pound sterling'],
+  ]);
+  
+  currencies.forEach(function (val, key, mao) {
+    console.log(`${key}: ${val}`);
+  });
+  
+  //SET
+  const currenciesNuique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+  console.log(currenciesNuique);
+  
+  currenciesNuique.forEach(function (val, _, set) {
+    console.log(`${val}: ${val}`);
+  });
+  
+  */
