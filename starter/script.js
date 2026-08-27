@@ -74,3 +74,62 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+/*
+///////////////////////////////////////////
+//simple array methods
+
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+//SLICE
+
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(1, -2));
+
+console.log(arr.slice());
+console.log([...arr]);
+
+//splice
+
+//console.log(arr.splice(2));
+arr.splice(-1);
+console.log(arr);
+
+arr.splice(1, 2);
+console.log(arr);
+
+//REVERSE
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+
+console.log(arr2.reverse());
+console.log(arr2);
+
+//CONCATINATE
+
+const letter = arr.concat(arr2);
+console.log(letter);
+console.log([...arr, ...arr2]);
+
+//JOIN
+
+console.log(letter.join(' - '));
+//////////////////////////////////
+//THE NEW "AT" METHOD
+
+const arr = [23, 11, 64, 98];
+console.log(arr[0]);
+
+console.log(arr.at(0));
+
+//getting the alst element
+console.log(arr[arr.length - 1]);
+console.log(arr.slice(-1)[0]);
+
+console.log(arr.at(-1));
+
+console.log('huzaifa'.at(4));
+console.log('huzaifa'.at(-1));
+*/
