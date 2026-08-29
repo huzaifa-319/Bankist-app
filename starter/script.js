@@ -78,6 +78,19 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const createUsernames = function (acc) {
+  acc.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -187,4 +200,32 @@ movements.forEach(function (mov, i, arr) {
     console.log(`${val}: ${val}`);
   });
   
-  */
+  /////////////////////////////////////////////////
+  //THE MAP METHOD
+  
+  const eroToUsd = 1.1;
+  
+  const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+  // const movementsUSD = movements.map(function (mov) {
+    //   return mov * eroToUsd;
+    // });
+    const movementsUSD = movements.map(mov => mov * eroToUsd);
+    
+    console.log(movements);
+    console.log(movementsUSD);
+    
+    const movementsUSDfor = [];
+    
+    for (const mov of movements) {
+      movementsUSDfor.push(mov * eroToUsd);
+    }
+    console.log(movementsUSDfor);
+    
+    const movementsDescitption = movements.map(
+      (mov, i, arr) =>
+        `Movement ${i + 1}: You ${mov > 0 ? 'deposit' : 'withdraw'} ${Math.abs(mov)}`,
+    );
+    
+    console.log(movementsDescitption);
+    
+    */
