@@ -77,7 +77,11 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
-
+const calPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calPrintBalance(account1.movements);
 const createUsernames = function (acc) {
   acc.forEach(function (acc) {
     acc.username = acc.owner
@@ -89,7 +93,6 @@ const createUsernames = function (acc) {
 };
 
 createUsernames(accounts);
-console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -228,4 +231,37 @@ movements.forEach(function (mov, i, arr) {
     
     console.log(movementsDescitption);
     
-    */
+    
+    /////////////////////////////////////////
+    //FILTER METHOD
+    
+    const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+    const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+const depositsfor = [];
+for (const mov of movements) if (mov > 0) depositsfor.push(mov);
+console.log(depositsfor);
+
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+});
+console.log(withdrawals);
+
+*/
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+console.log(movements);
+
+//accumulatoris like a snowball
+const balance = movements.reduce((acc, curr) => acc + curr, 0); //Arrow function
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of movements) {
+  balance2 += mov;
+}
+
+console.log(balance2);
