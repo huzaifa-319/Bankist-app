@@ -82,6 +82,26 @@ const calPrintBalance = function (movements) {
   labelBalance.textContent = `${balance} EUR`;
 };
 calPrintBalance(account1.movements);
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter(int => int >= 1)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+calcDisplaySummary(account1.movements);
 const createUsernames = function (acc) {
   acc.forEach(function (acc) {
     acc.username = acc.owner
@@ -250,7 +270,8 @@ const withdrawals = movements.filter(function (mov) {
 });
 console.log(withdrawals);
 
-*/
+//////////////////////////////////////////////////////
+//REDUCE METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 console.log(movements);
@@ -265,3 +286,28 @@ for (const mov of movements) {
 }
 
 console.log(balance2);
+
+//Maximun values from the maovement array
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else {
+    return mov;
+}
+}, movements[0]);
+
+console.log(max);
+
+////////////////////////////////////////////////////////////
+//THE MAGIC OF CHAINING METHOD
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const euroToUsd = 1.1;
+// PIPELINE
+const totalDepositsInUSD = movements
+.filter(mov => mov > 0)
+.map(mov => mov * euroToUsd)
+.reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsInUSD);
+
+*/
